@@ -3,6 +3,7 @@ package com.casadocodigo.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -81,6 +82,10 @@ public class Book {
 	
 	public void addAuthor(Author author) {
 		authors.add(author);
+	}
+	
+	public String getAuthorsNames() {
+		return authors.stream().map(Author::getName).collect(Collectors.joining(", "));
 	}
 	
 	@Override
