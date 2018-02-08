@@ -2,6 +2,7 @@ package com.casadocodigo.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,9 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -29,6 +32,9 @@ public class Book {
 
 	@NotBlank
 	private String title;
+	
+	@NotBlank
+	private String subtitle;
 
 	@NotBlank
 	private String description;
@@ -39,7 +45,10 @@ public class Book {
 	@DecimalMin("10")
 	private BigDecimal price;
 	
-	@Size(min = 1)
+	@NotNull
+	@Temporal(TemporalType.DATE)
+	private Date releaseDate;
+	
 	@ManyToMany
 	@JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "book_id"),
 			inverseJoinColumns = @JoinColumn(name = "author_id"))
@@ -56,6 +65,14 @@ public class Book {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public String getSubtitle() {
+		return subtitle;
+	}
+	
+	public void setSubtitle(String subtitle) {
+		this.subtitle = subtitle;
 	}
 
 	public String getDescription() {
@@ -80,6 +97,14 @@ public class Book {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+	
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+	
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 	
 	public List<Author> getAuthors() {

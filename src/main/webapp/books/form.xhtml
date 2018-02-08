@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:h="http://xmlns.jcp.org/jsf/html"
 	  xmlns:f="http://xmlns.jcp.org/jsf/core"
-	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 	  
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -15,8 +16,12 @@
 		
 			<div>
 				<label for="titulo">Título</label>
-				<h:inputText id="titulo" value="#{adminBooksBean.book.title}"
-					/>
+				<h:inputText id="titulo" value="#{adminBooksBean.book.title}" />
+			</div>
+			
+			<div>
+				<label for="subtitulo">Subtítulo</label>
+				<h:inputText id="subtitulo" value="#{adminBooksBean.book.subtitle}" />
 			</div>
 			
 			<div>
@@ -25,13 +30,20 @@
 			</div>
 			
 			<div>
-				<label for="pages">Número de páginas</label>
-				<h:inputText id="pages" value="#{adminBooksBean.book.numberOfPages}" />
+				<label for="paginas">Número de páginas</label>
+				<h:inputText id="paginas" value="#{adminBooksBean.book.numberOfPages}" />
 			</div>
 			
 			<div>
 				<label for="preco">Preço</label>
 				<h:inputText id="preco" value="#{adminBooksBean.book.price}" />
+			</div>
+			
+			<div>
+				<label for="dataLancamento">Data de lançamento</label>
+				<h:inputText id="dataLancamento" value="#{adminBooksBean.book.releaseDate}" pt:type="date">
+					<f:convertDateTime pattern="yyyy-MM-dd" />
+				</h:inputText>
 			</div>
 			
 			<div>
@@ -41,7 +53,6 @@
 						itemLabel="#{author.name}" itemValue="#{author.id}" />
 				</h:selectManyCheckbox>
 			</div>
-			
 			
 			<h:commandButton value="Salvar" action="#{adminBooksBean.save()}" />
 		</h:form>
