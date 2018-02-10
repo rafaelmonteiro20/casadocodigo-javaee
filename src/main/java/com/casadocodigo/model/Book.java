@@ -49,6 +49,8 @@ public class Book {
 	@Temporal(TemporalType.DATE)
 	private Date releaseDate;
 	
+	private String coverPath;
+	
 	@ManyToMany
 	@JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "book_id"),
 			inverseJoinColumns = @JoinColumn(name = "author_id"))
@@ -105,6 +107,14 @@ public class Book {
 	
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
+	}
+	
+	public String getCoverPath() {
+		return coverPath;
+	}
+	
+	public void setCoverPath(String coverPath) {
+		this.coverPath = coverPath;
 	}
 	
 	public List<Author> getAuthors() {
