@@ -164,7 +164,7 @@
 	<header role="banner" class="cabecalhoPrincipal container">
 		<h1 class="cabecalhoPrincipal-titulo">
 			<a tabindex="1" href="/" class="cabecalhoPrincipal-linkTitulo" title="Casa do Código - Livros e Tecnologia">
-				<svg class="logo" role="img" aria-labelledby="altLogo"  x="0px" y="0px"
+				<svg class="logo" role="img" aria-labelledby="altLogo" x="0px" y="0px"
 	 				viewBox="0 0 208.769 70" enable-background="new 0 0 208.769 70" xml:space="preserve">
 					<rect id="back" fill="#FFFFFF" width="65" height="70"/>
 					<g id="symbol">
@@ -480,18 +480,18 @@
 		<section class="vitrineDestaquinho container">
 			<h2 class="vitrineDestaquinho-titulo">Últimos lançamentos</h2>
 			<ul class="vitrineDestaquinho-lista">
-				<li class="livroNaVitrine vitrineDestaquinho-produto">
-					<a href="/products/livro-aspnet-core-mvc" class="livroNaVitrine-link" 
-						title="ASP.NET Core MVC: Aplicações modernas em conjunto com o Entity Framework">
-						<div class="livroNaVitrine-imagemContainer" role="presentation">
-							<img class="livroNaVitrine-imagem " alt="Livro de ASP.NET Core MVC" title="Livro de ASP.NET Core MVC"
-								src="//cdn.shopify.com/s/files/1/0155/7645/products/8ROjv5OVfks54j7FvDehRuYHax0-et96hKHyplURGe4_large.jpg?v=1518105341" />
-						</div>
-						<span class="livroNaVitrine-nome">
-						ASP.NET Core MVC
-						</span>
-					</a>
-				</li>
+				<ui:repeat var="book" value="#{homeBean.lastReleases()}">
+					<li class="livroNaVitrine vitrineDestaquinho-produto">
+						<a href="/products/livro-aspnet-core-mvc" class="livroNaVitrine-link" 
+							title="#{book.title}: #{book.subtitle}">
+							<div class="livroNaVitrine-imagemContainer" role="presentation">
+								<img class="livroNaVitrine-imagem " alt="Livro de #{book.title}" title="#{book.title}"
+									src="//cdn.shopify.com/s/files/1/0155/7645/products/8ROjv5OVfks54j7FvDehRuYHax0-et96hKHyplURGe4_large.jpg?v=1518105341" />
+							</div>
+							<span class="livroNaVitrine-nome">#{book.title}</span>
+						</a>
+					</li>
+				</ui:repeat>
 			</ul>
 		</section>
 
@@ -499,17 +499,17 @@
 
 		<section class="vitrineDaColecao container">
 			<ul class="vitrineDaColecao-lista">
-				<li class="livroNaVitrine vitrineDaColecao-produto">
-					<a href="/products/livro-aspnet-core-mvc" class="livroNaVitrine-link" title="ASP.NET Core MVC: Aplicações modernas em conjunto com o Entity Framework">
-						<div class="livroNaVitrine-imagemContainer" role="presentation">
-							<img class="livroNaVitrine-imagem " src="//cdn.shopify.com/s/files/1/0155/7645/products/8ROjv5OVfks54j7FvDehRuYHax0-et96hKHyplURGe4_large.jpg?v=1518105341" 
-								alt="Livro de ASP.NET Core MVC" title="Livro de ASP.NET Core MVC" />
-						</div>
-						<span class="livroNaVitrine-nome">
-							ASP.NET Core MVC
-						</span>
-					</a>
-				</li>
+				<ui:repeat var="book" value="#{homeBean.olderBooks()}">
+					<li class="livroNaVitrine vitrineDaColecao-produto">
+						<a href="/products/livro-aspnet-core-mvc" class="livroNaVitrine-link" title="#{book.title}: #{book.subtitle}">
+							<div class="livroNaVitrine-imagemContainer" role="presentation">
+								<img class="livroNaVitrine-imagem " src="//cdn.shopify.com/s/files/1/0155/7645/products/8ROjv5OVfks54j7FvDehRuYHax0-et96hKHyplURGe4_large.jpg?v=1518105341" 
+									alt="Livro de #{book.title}" title="#{book.title}" />
+							</div>
+							<span class="livroNaVitrine-nome">#{book.title}</span>
+						</a>
+					</li>
+				</ui:repeat>
 			</ul>
 		</section>
 	</main>
