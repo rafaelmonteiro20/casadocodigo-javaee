@@ -23,6 +23,11 @@ public class ShoppingCartBean {
 		return "/cart.xhtml?faces-redirect=true";
 	}
 	
+	public String remove(Integer bookID) {
+		shoppingCart.remove(new ShoppingItem(new Book(bookID)));
+		return "/cart.xhtml?faces-redirect=true";
+	}
+	
 	private ShoppingItem createItem(Integer bookID) {
 		Book book = bookDAO.findOne(bookID);
 		return new ShoppingItem(book);

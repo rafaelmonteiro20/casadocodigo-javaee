@@ -57,6 +57,14 @@ public class Book {
 	private List<Author> authors = new ArrayList<>();
 
 	
+	public Book() {
+
+	}
+	
+	public Book(Integer bookID) {
+		this.id = bookID;
+	}
+
 	public Integer getId() {
 		return id;
 	}

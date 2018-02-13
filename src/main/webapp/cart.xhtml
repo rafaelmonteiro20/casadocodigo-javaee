@@ -478,8 +478,8 @@
 	<main>
 		<section class="infoSection container">
 			<h2 class="infoSection-titulo">Seu carrinho</h2>
-			<form class="formularioDoCarrinho" action="/carrinho" method="post">
-				<table class="formularioDoCarrinho-tabela">
+			<form jsf:id="cart-form" class="formularioDoCarrinho" method="post">
+				<table class="formularioDoCarrinho-tabela" jsf:rendered="#{!shoppingCart.isEmpty()}">
 					<thead class="formularioDoCarrinho-cabecalho">
 						<tr>
 							<th></th>
@@ -509,7 +509,7 @@
 							</td>
 							<td class="formularioDoCarrinho-item formularioDoCarrinho-item-precoTotal">#{shoppingCart.getTotal(item)}</td>
 							<td class="formularioDoCarrinho-item">
-								<a href="#">
+								<a jsf:action="#{shoppingCartBean.remove(item.bookID)}">
 									<img class="formularioDoCarrinho-item-remover-imagem"  src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/trash.png?6587815016992574778" alt="X" title="Remover" />
 								</a>
 							</td>
@@ -535,6 +535,10 @@
 					</tfoot>
 				</table>
 			</form>
+			<p class="carrinho-texto" jsf:rendered="#{shoppingCart.isEmpty()}">
+				Seu carrinho de compras ainda está vazio?
+				<a jsf:outcome="/home.xhtml" class="carrinho-texto-link">Dê uma olhada nos livros disponíveis.</a>
+			</p>
 		</section>
 	</main>
 	
