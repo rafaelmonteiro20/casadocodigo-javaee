@@ -1,6 +1,9 @@
 package com.casadocodigo.session;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -31,6 +34,24 @@ public class ShoppingCart implements Serializable {
 	
 	public int getQuantity() {
 		return items.values().stream().reduce(0, (next, accumulator) -> next + accumulator);
+	}
+	
+	public Collection<ShoppingItem> getItems() {
+		return new ArrayList<>(items.keySet());
+	}
+	
+	public BigDecimal getTotal(ShoppingItem item) {
+		return item.getTotal(getQuantity(item));
+	}
+	
+	public BigDecimal getTotal() {
+		BigDecimal total = BigDecimal.ZERO;
+		
+		for(ShoppingItem item : items.keySet()) {
+			total = total.add(getTotal(item));
+		}
+		
+		return total;
 	}
 	
 }

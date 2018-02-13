@@ -20,7 +20,7 @@ public class ShoppingCartBean {
 	public String add(Integer bookID) {
 		ShoppingItem item = createItem(bookID);
 		shoppingCart.add(item);
-		return "/home.xhtml?faces-redirect=true";
+		return "/cart.xhtml?faces-redirect=true";
 	}
 	
 	private ShoppingItem createItem(Integer bookID) {
