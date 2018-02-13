@@ -19,7 +19,6 @@ public class BookDetailsBean {
 	
 	public void loadBook() {
 		book = bookDAO.findOne(id);
-		System.out.println(book);
 	}
 
 	public Book getBook() {

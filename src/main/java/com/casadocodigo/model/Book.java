@@ -133,6 +133,7 @@ public class Book {
 		return authors.stream().map(Author::getName).collect(Collectors.joining(", "));
 	}
 	
+	
 	@Override
 	public String toString() {
 		return "Book [" + id + ", " + title + "]";

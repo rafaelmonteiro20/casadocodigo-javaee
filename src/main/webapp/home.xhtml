@@ -55,12 +55,12 @@
 			background-color:#000 !important;
 			color:#fff !important;
 			display:none;
-			font-family:-apple-system, &#39;Helvetica Neue&#39;, sans-serif !important;
+			font-family:-apple-system, 'Helvetica Neue', sans-serif !important;
 			min-width:150px !important;
 			white-space:nowrap !important
 		}
 		.additional-checkout-button--apple-pay:hover,.additional-checkout-button--apple-pay:active,
-		.additional-checkout-button--apple-pay:visited{
+		.additional-checkout-button--apple-pay:visited {
 			color:#fff !important;
 			text-decoration:none !important
 		}
@@ -115,7 +115,7 @@
 			box-shadow:inset 0 0 0 1px #a8abb3
 		}
 		.additional-checkout-button--google-pay:disabled::before {
-			content:&#39;&#39;;
+			content:'';
 			width:100%;
 			height:100%;
 			display:block;
@@ -482,14 +482,14 @@
 			<ul class="vitrineDestaquinho-lista">
 				<ui:repeat var="book" value="#{homeBean.lastReleases()}">
 					<li class="livroNaVitrine vitrineDestaquinho-produto">
-						<a href="/products/livro-aspnet-core-mvc" class="livroNaVitrine-link" 
-							title="#{book.title}: #{book.subtitle}">
+						<h:link outcome="/books/details" styleClass="livroNaVitrine-link" title="#{book.title}: #{book.subtitle}">
 							<div class="livroNaVitrine-imagemContainer" role="presentation">
 								<img class="livroNaVitrine-imagem " alt="Livro de #{book.title}" title="#{book.title}"
 									src="//cdn.shopify.com/s/files/1/0155/7645/products/8ROjv5OVfks54j7FvDehRuYHax0-et96hKHyplURGe4_large.jpg?v=1518105341" />
 							</div>
 							<span class="livroNaVitrine-nome">#{book.title}</span>
-						</a>
+							<f:param name="id" value="#{book.id}" />
+						</h:link>
 					</li>
 				</ui:repeat>
 			</ul>
@@ -501,13 +501,14 @@
 			<ul class="vitrineDaColecao-lista">
 				<ui:repeat var="book" value="#{homeBean.olderBooks()}">
 					<li class="livroNaVitrine vitrineDaColecao-produto">
-						<a href="/products/livro-aspnet-core-mvc" class="livroNaVitrine-link" title="#{book.title}: #{book.subtitle}">
+						<h:link outcome="/books/details" styleClass="livroNaVitrine-link" title="#{book.title}: #{book.subtitle}">
 							<div class="livroNaVitrine-imagemContainer" role="presentation">
 								<img class="livroNaVitrine-imagem " src="//cdn.shopify.com/s/files/1/0155/7645/products/8ROjv5OVfks54j7FvDehRuYHax0-et96hKHyplURGe4_large.jpg?v=1518105341" 
 									alt="Livro de #{book.title}" title="#{book.title}" />
 							</div>
 							<span class="livroNaVitrine-nome">#{book.title}</span>
-						</a>
+							<f:param name="id" value="#{book.id}" />
+						</h:link>
 					</li>
 				</ui:repeat>
 			</ul>

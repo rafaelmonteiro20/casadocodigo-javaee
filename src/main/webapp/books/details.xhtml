@@ -588,39 +588,37 @@
 		
 		<section class="conteudoDoLivro infoSection">
 			<h2 class="infoSection-titulo">Conteúdo</h2>
-			<p class="infoSection-texto">${produto.descricao}</p>
+			<p class="infoSection-texto">#{bookDetailsBean.book.description}</p>
 		</section>
 
 
 		<section class="autoresDoLivro infoSection">
-			<h2 class="infoSection-titulo">Autor</h2>
-			<div class="autoresDoLivro-autor">
-				<img class="autoresDoLivro-autor-foto" title="Foto de Rodrigo Turini"
-					src="//cdn.shopify.com/s/files/1/0155/7645/files/rodrigo-turini.png?12931136276439619480?v=2018-02-05" />
-				
-				<h3 class="autoresDoLivro-autor-nome">Rodrigo Turini</h3>
-				<p class="infoSection-texto autoresDoLivro-autor-descricao">
-					Rodrigo Turini é Bacharel em Ciência da
-					Computação e líder técnico na Alura, a plataforma de cursos online
-					do Grupo Caelum. Desenvolve em diferentes linguagens, mas tem um
-					envolvimento muito forte com o Java, sendo membro ativo da JCP e de
-					expert groups do JavaEE. Turini participa ativamente da comunidade
-					em blogs, fóruns, listas de discussões e também em eventos
-					nacionais e internacionais. É um dos líderes de desenvolvimento do
-					VRaptor, e contribui para diversos outros projetos e manifestos
-					open source. Gosta de estudar continuamente as melhores práticas da
-					orientação a objetos, programação funcional e reativa.</p>
-			</div>
+			<h2 class="infoSection-titulo">
+				#{bookDetailsBean.book.authors.size() eq 1 ? 'Autor' : 'Autores'}
+			</h2>
+			<ui:repeat var="author" value="#{bookDetailsBean.book.authors}">
+				<div class="autoresDoLivro-autor">
+					<img class="autoresDoLivro-autor-foto" title="Foto de #{author.name}"
+						src="//cdn.shopify.com/s/files/1/0155/7645/files/rodrigo-turini.png?12931136276439619480?v=2018-02-05" />
+					
+					<h3 class="autoresDoLivro-autor-nome">#{author.name}</h3>
+					<p class="infoSection-texto autoresDoLivro-autor-descricao">
+						#{author.description}
+					</p>
+				</div>
+			</ui:repeat>
 		</section>
 
 		<section class="infosAdicionaisDoLivro infoSection">
 			<h2 class="infoSection-titulo">Dados do produto</h2>
 			<dl class="infosAdicionaisDoLivro-info">
 				<dt class="infosAdicionaisDoLivro-info-titulo">Número de páginas:</dt>
-				<dd class="infosAdicionaisDoLivro-info-valor">${produto.paginas}</dd>
+				<dd class="infosAdicionaisDoLivro-info-valor">#{bookDetailsBean.book.numberOfPages}</dd>
 				<dt class="infosAdicionaisDoLivro-info-titulo">Data de lançamento:</dt>
 				<dd class="infosAdicionaisDoLivro-info-valor">
-					
+					<h:outputText value="#{bookDetailsBean.book.releaseDate}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
 				</dd>
 			</dl>
 		</section>
