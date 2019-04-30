@@ -45,7 +45,7 @@ public class AdminBooksBean {
 		book.setCoverPath(coverPath);
 		
 		bookDAO.save(book);
-		messagesHelper.addFlash("Livro gravado com sucesso");
+		messagesHelper.addFlash("Livro salvo com sucesso");
 		return "/books/list?faces-redirect=true";
 	}
 	

@@ -99,16 +99,17 @@
 <!-- 				</h:selectManyCheckbox> -->
 <!-- 			</div> -->
 <!-- 			<h:commandButton value="Salvar" action="#{adminBooksBean.save()}" /> -->
+
+				<button name="button" type="submit" jsf:action="#{adminBooksBean.save()}"
+						class="btn" aria-busy="false">
+					<span class="btn__content">Salvar</span> 
+					<i class="btn__spinner icon icon--button-spinner"></i>
+				</button>
+
+
 			</h:form>
 			
 			
 		</div>
-		
-		<div class="main__footer">
-			<div role="contentinfo" aria-label="Rodapé">
-				<p class="copyright-text">Todos os direitos reservados Casa do Código</p>
-			</div>
-		</div>
 	</ui:define>
-
 </ui:composition>
