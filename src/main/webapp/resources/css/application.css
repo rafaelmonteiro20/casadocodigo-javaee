@@ -6565,3 +6565,65 @@ opacity
 	top: -0.65em;
 	padding: 0 0.55em
 }
+.select-many-checkbox {
+	
+}
+.select-many-checkbox td:last-child {
+	text-align: left;
+}
+.select-many-checkbox td {
+	display: block;
+    width: 100%;
+    padding-bottom: 10px;
+}
+.select-many-checkbox label {
+	padding-left:0.75em;
+}
+.select-many-checkbox input[type="checkbox"] {
+	-webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    border-radius: 4px;
+    width: 18px;
+    height: 18px;
+    -webkit-box-shadow: 0 0 0 0 #2a9dcc inset;
+    box-shadow: 0 0 0 0 #2a9dcc inset;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    cursor: pointer;
+    vertical-align: -4px;
+    border: 1px solid  #d9d9d9;
+}
+.select-many-checkbox input[type="checkbox"]:checked {
+	border: none;
+    -webkit-box-shadow: 0 0 0 10px #2a9dcc inset;
+    box-shadow: 0 0 0 10px #2a9dcc inset;
+}
+.select-many-checkbox input[type="checkbox"]:after {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+.select-many-checkbox input[type="checkbox"]:after {
+    width: 10px;
+    height: 8px;
+    margin-left: -5px;
+    margin-top: -4px;
+    background-image: url(//cdn.shopify.com/s/assets/checkout/checkbox-tick-9f17bee7b5e3ada22164b6e06ce6153e54484a9348bea333a9ff6ba1460cfe8d.png);
+    background-image: url(//cdn.shopify.com/s/assets/checkout/checkbox-tick-66a9a39f70a44a226223ef4c61a701d2d10afaa73ba8846a509fbe58a82f3f36.svg), none;
+}
+
+.select-many-checkbox input[type="checkbox"]:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: scale(0.2);
+    transform: scale(0.2);
+    -webkit-transition: all 0.2s ease-in-out 0.1s;
+    transition: all 0.2s ease-in-out 0.1s;
+    opacity: 0;
+}
+

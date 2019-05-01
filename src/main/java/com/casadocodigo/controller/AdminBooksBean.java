@@ -41,16 +41,20 @@ public class AdminBooksBean {
 	public String save() {
 		pupulateBookAuthors();
 		
-		String coverPath = fileSaver.write("covers", cover);
-		book.setCoverPath(coverPath);
 		
-		bookDAO.save(book);
-		messagesHelper.addFlash("Livro salvo com sucesso");
+//		String coverPath = fileSaver.write("covers", cover);
+//		book.setCoverPath(coverPath);
+//		
+//		bookDAO.save(book);
+//		messagesHelper.addFlash("Livro salvo com sucesso");
 		return "/books/list?faces-redirect=true";
 	}
 	
 	private void pupulateBookAuthors() {
-		selectedAuthorsIds.stream().map(id -> new Author(id)).forEach(book::addAuthor);
+		selectedAuthorsIds.stream().peek(id -> {
+				System.out.println(id);
+			}).map(id -> new Author(id)).forEach(book::addAuthor);
+		
 	}
 	
 	public Book getBook() {
