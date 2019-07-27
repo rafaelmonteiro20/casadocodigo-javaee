@@ -6,16 +6,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Table(name = "author")
-public class Author {
+public class Author implements Identifiable<Integer> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank
 	private String name;
 	
+	@NotBlank
 	private String description;
 
 	
@@ -27,6 +31,7 @@ public class Author {
 		this.id = id;
 	}
 
+	@Override
 	public Integer getId() {
 		return id;
 	}
