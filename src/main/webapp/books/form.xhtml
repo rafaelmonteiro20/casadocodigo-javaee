@@ -13,6 +13,8 @@
 			</div>
 			
 			<h:form prependId="false" enctype="multipart/form-data">
+				<h:messages />
+			
 				<div class="section">
 					<div class="section__header">
 						<div class="layout-flex layout-flex--tight-vertical layout-flex--loose-horizontal layout-flex--wrap">
@@ -73,6 +75,22 @@
 									</h:inputText>	  
 								</div>
 							</div>
+							
+							<div class="field--half field field--required">
+								<div class="field__input-wrapper field__input-wrapper--select">
+									<label class="field__label" for="pages">Categoria</label>
+									<div class="field__input-wrapper field__input-wrapper--select">
+										<h:selectOneMenu id="category" value="#{adminBooksBean.book.category}" 
+											styleClass="field__input" pt:placeholder="Categoria">
+											<f:selectItems value="#{adminBooksBean.categories}" var="category"
+												itemLabel="#{category.description}" itemValue="#{category}" />
+										</h:selectOneMenu>
+									</div>
+									<div class="field__caret">
+										
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -94,14 +112,6 @@
 						</div>
 					</div>
 					
-<!-- 					<div class="checkbox-wrapper"> -->
-<!-- 							<div class="checkbox__input"> -->
-<!-- 								<input jsf:value="#{adminBooksBean.selectedAuthorsIds}"  -->
-<!-- 									type="checkbox" class="input-checkbox"></input> -->
-<!-- 							</div> -->
-<!-- 							<label class="checkbox__label" for="raf">Rafael</label> -->
-<!-- 						</div> -->
-					
 					<h:selectManyCheckbox value="#{adminBooksBean.selectedAuthorsIds}" converter="javax.faces.Integer"
 						layout="pageDirection" styleClass="select-many-checkbox">
 						<f:selectItems value="#{adminBooksBean.authors}" var="author" 
@@ -116,11 +126,9 @@
 						<i class="btn__spinner icon icon--button-spinner"></i>
 					</button>
 					
-					<a href="/casadocodigo/books/list.xhtml">Voltar a pesquisa</a>
+					<a href="#{request.contextPath}/books/list.xhtml">Voltar a pesquisa</a>
 				</div>
 			</h:form>
-			
-			
 		</div>
 	</ui:define>
 </ui:composition>

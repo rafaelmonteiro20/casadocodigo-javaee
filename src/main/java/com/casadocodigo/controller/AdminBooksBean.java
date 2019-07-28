@@ -13,6 +13,7 @@ import com.casadocodigo.infra.FileSaver;
 import com.casadocodigo.infra.jsf.MessagesHelper;
 import com.casadocodigo.model.Author;
 import com.casadocodigo.model.Book;
+import com.casadocodigo.model.Category;
 
 @Model
 public class AdminBooksBean {
@@ -41,7 +42,6 @@ public class AdminBooksBean {
 	public String save() {
 		pupulateBookAuthors();
 		
-		
 //		String coverPath = fileSaver.write("covers", cover);
 //		book.setCoverPath(coverPath);
 //		
@@ -51,10 +51,15 @@ public class AdminBooksBean {
 	}
 	
 	private void pupulateBookAuthors() {
-		selectedAuthorsIds.stream().peek(id -> {
-				System.out.println(id);
-			}).map(id -> new Author(id)).forEach(book::addAuthor);
-		
+		selectedAuthorsIds.stream().map(id -> new Author(id))
+				.forEach(book::addAuthor);
+	}
+	
+	public List<Author> getAuthors() {
+		if(authors == null) {
+			authors = authorDAO.findAll();
+		}
+		return authors;
 	}
 	
 	public Book getBook() {
@@ -69,11 +74,8 @@ public class AdminBooksBean {
 		this.cover = cover;
 	}
 	
-	public List<Author> getAuthors() {
-		if(authors == null)
-			authors = authorDAO.findAll();
-		
-		return authors;
+	public Category[] getCategories() {
+		return Category.values();
 	}
 	
 	public List<Integer> getSelectedAuthorsIds() {

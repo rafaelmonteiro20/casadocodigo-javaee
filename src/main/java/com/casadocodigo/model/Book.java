@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -52,6 +54,9 @@ public class Book implements Identifiable<Integer> {
 	
 	private String coverPath;
 	
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private Category category;
 	
 	@ManyToMany
 	@JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "book_id"),
@@ -128,12 +133,16 @@ public class Book implements Identifiable<Integer> {
 		this.coverPath = coverPath;
 	}
 	
-	public List<Author> getAuthors() {
-		return authors;
+	public Category getCategory() {
+		return category;
 	}
 	
-	public void setAuthors(List<Author> authors) {
-		this.authors = authors;
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	
+	public List<Author> getAuthors() {
+		return authors;
 	}
 	
 	public void addAuthor(Author author) {
