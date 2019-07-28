@@ -63,6 +63,16 @@
 									</h:inputText>
 								</div>
 							</div>
+							
+							<div class="field--half field field--required">
+								<label class="field__label" for="pages">Preço</label>
+								<div class="field__input-wrapper">
+									<h:inputText id="price" value="#{adminBooksBean.book.price}" 
+									   	pt:placeholder="Preço" styleClass="field__input">
+										<f:convertNumber pattern="#,##0.00" />
+									</h:inputText>	  
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -70,7 +80,7 @@
 				<div class="section">
 					<div class="section__header">
 						<div class="layout-flex layout-flex--tight-vertical layout-flex--loose-horizontal layout-flex--wrap">
-							<h2 class="section__title layout-flex__item layout-flex__item--stretch">Preços</h2>
+							<h2 class="section__title layout-flex__item layout-flex__item--stretch">Capa</h2>
 						</div>
 					</div>
 					
@@ -84,28 +94,19 @@
 						</div>
 					</div>
 					
-					<div class="checkbox-wrapper">
-							<div class="checkbox__input">
-								<input jsf:value="#{adminBooksBean.selectedAuthorsIds}" 
-									type="checkbox" class="input-checkbox"></input>
-							</div>
-							<label class="checkbox__label" for="raf">Rafael</label>
-						</div>
+<!-- 					<div class="checkbox-wrapper"> -->
+<!-- 							<div class="checkbox__input"> -->
+<!-- 								<input jsf:value="#{adminBooksBean.selectedAuthorsIds}"  -->
+<!-- 									type="checkbox" class="input-checkbox"></input> -->
+<!-- 							</div> -->
+<!-- 							<label class="checkbox__label" for="raf">Rafael</label> -->
+<!-- 						</div> -->
 					
 					<h:selectManyCheckbox value="#{adminBooksBean.selectedAuthorsIds}" converter="javax.faces.Integer"
 						layout="pageDirection" styleClass="select-many-checkbox">
 						<f:selectItems value="#{adminBooksBean.authors}" var="author" 
 							itemLabel="#{author.name}" itemValue="#{author.id}"  />
 					</h:selectManyCheckbox>
-					
-					
-					
-				
-						
-					
-				
-				
-						
 				</div>
 
 				<div class="button__footer">

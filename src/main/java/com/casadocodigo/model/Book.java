@@ -24,7 +24,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "book")
-public class Book {
+public class Book implements Identifiable<Integer> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,16 +40,18 @@ public class Book {
 	private String description;
 
 	@Min(50)
-	private int numberOfPages;
+	@NotNull
+	private Integer numberOfPages;
 
-	@DecimalMin("10")
+	@DecimalMin("10.0")
 	private BigDecimal price;
 	
 	@NotNull
 	@Temporal(TemporalType.DATE)
-	private Date releaseDate;
+	private Date releaseDate = new Date();
 	
 	private String coverPath;
+	
 	
 	@ManyToMany
 	@JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "book_id"),
@@ -65,6 +67,7 @@ public class Book {
 		this.id = bookID;
 	}
 
+	@Override
 	public Integer getId() {
 		return id;
 	}
@@ -93,11 +96,11 @@ public class Book {
 		this.description = description;
 	}
 
-	public int getNumberOfPages() {
+	public Integer getNumberOfPages() {
 		return numberOfPages;
 	}
 
-	public void setNumberOfPages(int numberOfPages) {
+	public void setNumberOfPages(Integer numberOfPages) {
 		this.numberOfPages = numberOfPages;
 	}
 
@@ -140,7 +143,6 @@ public class Book {
 	public String getAuthorsNames() {
 		return authors.stream().map(Author::getName).collect(Collectors.joining(", "));
 	}
-	
 	
 	@Override
 	public String toString() {
