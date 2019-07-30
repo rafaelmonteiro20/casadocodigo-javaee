@@ -7,11 +7,13 @@
 	 	template="/WEB-INF/templates/layout-admin.xhtml">
 	
 	<ui:define name="content">
+		<main>
+			<section class="infoSection container">
+				<h2 class="infoSection-titulo">Cadastro de Livro</h2>
+			</section>
+		</main>
+	
 		<div class="main">
-			<div class="main-header">
-				<h1>Cadastro de Livro</h1>
-			</div>
-			
 			<h:form prependId="false" enctype="multipart/form-data">
 				<h:messages />
 			
@@ -102,7 +104,7 @@
 						</div>
 					</div>
 					
-					
+					<h:inputFile id="cover" value="#{adminBooksBean.cover}" />
 				</div>
 				
 				<div class="section">

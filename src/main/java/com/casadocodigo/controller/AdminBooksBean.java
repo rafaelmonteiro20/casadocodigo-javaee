@@ -5,49 +5,49 @@ import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.servlet.http.Part;
-import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
 
 import com.casadocodigo.dao.AuthorDAO;
-import com.casadocodigo.dao.BookDAO;
-import com.casadocodigo.infra.FileSaver;
 import com.casadocodigo.infra.jsf.MessagesHelper;
 import com.casadocodigo.model.Author;
 import com.casadocodigo.model.Book;
 import com.casadocodigo.model.Category;
+import com.casadocodigo.service.BookService;
+import com.casadocodigo.service.exception.BookException;
 
 @Model
 public class AdminBooksBean {
 	
 	@Inject
-	private BookDAO bookDAO;
+	private BookService bookService;
 	
 	@Inject
 	private AuthorDAO authorDAO;
-	
-	@Inject
-	private FileSaver fileSaver;
 
 	@Inject
 	private MessagesHelper messagesHelper;
 	
+	@NotNull
 	private Part cover;
 
 	private Book book = new Book();
 	
 	private List<Author> authors;
-	
 	private List<Integer> selectedAuthorsIds;
 	
-	@Transactional
+	
 	public String save() {
 		pupulateBookAuthors();
 		
-//		String coverPath = fileSaver.write("covers", cover);
-//		book.setCoverPath(coverPath);
-//		
-//		bookDAO.save(book);
-//		messagesHelper.addFlash("Livro salvo com sucesso");
-		return "/books/list?faces-redirect=true";
+		try {
+			bookService.save(book, cover);
+			messagesHelper.addFlash("Livro salvo com sucesso");
+			return "/books/list?faces-redirect=true";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 	
 	private void pupulateBookAuthors() {
