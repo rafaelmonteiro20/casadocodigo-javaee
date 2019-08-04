@@ -5,8 +5,8 @@ import javax.servlet.http.Part;
 import javax.transaction.Transactional;
 
 import com.casadocodigo.dao.BookDAO;
-import com.casadocodigo.infra.FileSaver;
 import com.casadocodigo.model.Book;
+import com.casadocodigo.storage.FileSaver;
 
 public class BookService {
 
