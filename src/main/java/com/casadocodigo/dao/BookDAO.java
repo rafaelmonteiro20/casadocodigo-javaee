@@ -32,13 +32,14 @@ public class BookDAO {
 	}
 
 	public List<Book> lastReleases() {
-		return manager.createQuery("from Book where releaseDate <= now() order by id desc", Book.class)
+		return manager.createQuery("from Book order by releaseDate desc", Book.class)
 				.setMaxResults(5)
 				.getResultList();
 	}
 
 	public List<Book> olderBooks() {
-		return manager.createQuery("from Book", Book.class)
+		return manager.createQuery("from Book order by releaseDate desc", Book.class)
+				.setFirstResult(5)
 				.getResultList();
 	}
 

@@ -486,7 +486,7 @@
 						<h:link outcome="/books/details" styleClass="livroNaVitrine-link" title="#{book.title}: #{book.subtitle}">
 							<div class="livroNaVitrine-imagemContainer" role="presentation">
 								<img class="livroNaVitrine-imagem " alt="Livro de #{book.title}" title="#{book.title}"
-									src="//cdn.shopify.com/s/files/1/0155/7645/products/8ROjv5OVfks54j7FvDehRuYHax0-et96hKHyplURGe4_large.jpg?v=1518105341" />
+									 src="#{request.contextPath}/file/#{book.coverPath}" />
 							</div>
 							<span class="livroNaVitrine-nome">#{book.title}</span>
 							<f:param name="id" value="#{book.id}" />
@@ -504,8 +504,8 @@
 					<li class="livroNaVitrine vitrineDaColecao-produto">
 						<h:link outcome="/books/details" styleClass="livroNaVitrine-link" title="#{book.title}: #{book.subtitle}">
 							<div class="livroNaVitrine-imagemContainer" role="presentation">
-								<img class="livroNaVitrine-imagem " src="//cdn.shopify.com/s/files/1/0155/7645/products/8ROjv5OVfks54j7FvDehRuYHax0-et96hKHyplURGe4_large.jpg?v=1518105341" 
-									alt="Livro de #{book.title}" title="#{book.title}" />
+								<img class="livroNaVitrine-imagem " alt="Livro de #{book.title}" title="#{book.title}"
+									 src="#{request.contextPath}/file/#{book.coverPath}" />
 							</div>
 							<span class="livroNaVitrine-nome">#{book.title}</span>
 							<f:param name="id" value="#{book.id}" />
