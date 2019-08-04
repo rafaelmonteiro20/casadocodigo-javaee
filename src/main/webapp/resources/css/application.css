@@ -6651,6 +6651,7 @@ opacity
 	font-size: 14px;
     padding: 8px;
     text-align: center;
+    vertical-align: middle;
 }
 .pt-0 {
 	padding-top: 0px;

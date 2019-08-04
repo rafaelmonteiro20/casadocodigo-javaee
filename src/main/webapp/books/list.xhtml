@@ -13,6 +13,9 @@
 		
 				<h:dataTable var="book" value="#{adminListBooksBean.books}" styleClass="cdc-table">
 					<h:column>
+						<img src="#{request.contextPath}/file/#{book.coverPath}" alt="#{book.title}" width="60px" />
+					</h:column>
+					<h:column>
 						<f:facet name="header">Título</f:facet>
 						#{book.title}
 					</h:column>
