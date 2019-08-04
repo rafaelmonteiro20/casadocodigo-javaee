@@ -13,7 +13,6 @@ import com.casadocodigo.model.Author;
 import com.casadocodigo.model.Book;
 import com.casadocodigo.model.Category;
 import com.casadocodigo.service.BookService;
-import com.casadocodigo.service.exception.BookException;
 
 @Model
 public class AdminBooksBean {

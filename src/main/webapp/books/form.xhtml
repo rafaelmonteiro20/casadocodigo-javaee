@@ -17,7 +17,7 @@
 			<h:form prependId="false" enctype="multipart/form-data">
 				<h:messages />
 			
-				<div class="section">
+				<div class="section pt-0">
 					<div class="section__header">
 						<div class="layout-flex layout-flex--tight-vertical layout-flex--loose-horizontal layout-flex--wrap">
 							<h2 class="section__title layout-flex__item layout-flex__item--stretch">Informações do Livro</h2>
@@ -122,12 +122,7 @@
 				</div>
 
 				<div class="button__footer">
-					<button name="button" type="submit" jsf:action="#{adminBooksBean.save()}"
-							class="btn" aria-busy="false">
-						<span class="btn__content">Salvar</span> 
-						<i class="btn__spinner icon icon--button-spinner"></i>
-					</button>
-					
+					<h:commandButton value="Salvar" action="#{adminBooksBean.save}" styleClass="btn" />
 					<a href="#{request.contextPath}/books/list.xhtml">Voltar a pesquisa</a>
 				</div>
 			</h:form>

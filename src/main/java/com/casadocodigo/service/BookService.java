@@ -10,6 +10,8 @@ import com.casadocodigo.model.Book;
 
 public class BookService {
 
+	private static final String DIRECTORY = "covers";
+	
 	@Inject
 	private BookDAO bookDAO;
 	
@@ -18,7 +20,7 @@ public class BookService {
 
 	@Transactional
 	public void save(Book book, Part cover) {
-		String coverPath = fileSaver.write("covers", cover);
+		String coverPath = fileSaver.write(DIRECTORY, cover);
 		book.setCoverPath(coverPath);
 		bookDAO.save(book);
 	}

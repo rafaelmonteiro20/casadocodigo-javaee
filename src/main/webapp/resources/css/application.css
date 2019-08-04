@@ -6652,6 +6652,11 @@ opacity
     padding: 8px;
     text-align: center;
 }
-
-
-
+.pt-0 {
+	padding-top: 0px;
+}
+@media (min-width: 750px) {
+	.pt-0 {
+	    padding-top:0px;
+	}
+}
